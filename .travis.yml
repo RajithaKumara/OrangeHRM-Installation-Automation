@@ -3,6 +3,9 @@ dist: trusty
 
 language: java
 
+addons:
+  chrome: stable
+
 env:
   global:
     - GIT_APP_BRANCH=master
