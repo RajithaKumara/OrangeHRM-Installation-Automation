@@ -1,0 +1,40 @@
+sudo: required
+dist: trusty
+
+language: java
+
+env:
+  global:
+    - GIT_APP_BRANCH=master
+    - GIT_DEPTH=50
+    - GIT_APP_URL=https://github.com/orangehrm/orangehrm
+    - APP_DIR=orangehrm
+    - GIT_ENV_BRANCH=master
+    - GIT_ENV_DEPTH=50
+    - GIT_ENV_URL=https://github.com/orangehrm/orangehrm-os-dev-environment
+    - ENV_DIR=ohrm-os-dev-environment
+
+services:
+  - mysql
+
+before_install:
+  - sudo chmod 777 -R build
+  - ./build/travis/before_install.sh
+
+install:
+  - ./build/travis/install.sh
+
+before_script:
+  - ./build/travis/before_script.sh
+
+script:
+  - ./build/travis/script.sh
+
+after_failure:
+  - ./build/travis/after_failure.sh
+
+after_success:
+  - ./build/travis/after_success.sh
+
+after_script:
+  - ./build/travis/after_script.sh

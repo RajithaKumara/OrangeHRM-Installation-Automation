@@ -1,0 +1,20 @@
+#!/bin/bash
+
+echo "+-----------------------------------------+"
+echo "|    Travis CI Build Lifecycle Started    |"
+echo "+-----------------------------------------+"
+
+echo -e "\nJava version"
+java --version
+
+echo -e "\nmaven version"
+mvn --version
+
+wget https://chromedriver.storage.googleapis.com/2.41/chromedriver_linux64.zip
+unzip chromedriver_linux64.zip
+sudo mv chromedriver /usr/bin/chromedriver
+sudo chown root:root /usr/bin/chromedriver
+sudo chmod +x /usr/bin/chromedriver
+
+echo -e "\nchromedriver version"
+chromedriver --version
