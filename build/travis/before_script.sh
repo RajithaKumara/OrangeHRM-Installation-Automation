@@ -8,6 +8,7 @@ sudo chmod 777 -R .
 cd $ENV_DIR
 
 expression="s~LOCAL_SRC.*~LOCAL_SRC=$TRAVIS_BUILD_DIR/$APP_DIR~g"
+echo "${expression}"
 sed "${expression}" .env-dist > .env
 cat .env
 
@@ -22,6 +23,7 @@ cat /etc/hosts
 
 # Edit Configuration.properties
 expression="s~driverPath.*~driverPath=/usr/bin/chromedriver~g; s~pathToInstaller.*~pathToInstaller=http://php56/~g; s~databasePassword.*~databasePassword=root~g; s~databaseHostName.*~databaseHostName=mysql55~g; s~databasePort.*~databasePort=3324~g;"
+echo "${expression}"
 sed "${expression}" configs/Configuration.properties > Configuration.properties
 cat Configuration.properties
 mv Configuration.properties configs
