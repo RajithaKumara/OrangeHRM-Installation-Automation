@@ -15,7 +15,9 @@ docker-compose up -d
 sleep 10
 cd ..
 
+echo "127.0.0.1    php56 php70 php71 php72" | sudo tee -a /etc/hosts
+
 # Edit Configuration.properties
-expression="s~driverPath.*~driverPath=/usr/bin/chromedriver~g; s~pathToInstaller.*~pathToInstaller=http://127.0.0.1/~g; s~databasePassword.*~databasePassword=root~g; s~databaseHostName.*~databaseHostName=mysql55~g; s~databasePort.*~databasePort=3324~g;"
+expression="s~driverPath.*~driverPath=/usr/bin/chromedriver~g; s~pathToInstaller.*~pathToInstaller=http://php56/~g; s~databasePassword.*~databasePassword=root~g; s~databaseHostName.*~databaseHostName=mysql55~g; s~databasePort.*~databasePort=3324~g;"
 sed "${expression}" configs/Configuration.properties > Configuration.properties
 mv Configuration.properties configs
