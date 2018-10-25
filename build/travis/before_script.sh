@@ -14,6 +14,9 @@ cat .env
 
 docker-compose up -d
 docker ps
+docker exec -it ohrmosdevenvironment_php-7.1_1 sh -c "composer install -d symfony/lib"
+docker exec -it ohrmosdevenvironment_php-7.1_1 sh -c "composer dump-autoload -o -d symfony/lib"
+docker exec -it ohrmosdevenvironment_php-7.1_1 sh -c "cd symfony && php symfony orangehrm:publish-assets"
 docker exec -it ohrmosdevenvironment_php-7.1_1 sh -c "cd symfony && php symfony cc"
 
 sleep 10
