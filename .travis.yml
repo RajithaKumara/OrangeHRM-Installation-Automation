@@ -17,6 +17,14 @@ env:
     - GIT_ENV_URL=https://github.com/orangehrm/orangehrm-os-dev-environment
     - ENV_DIR=ohrm-os-dev-environment
 
+services:
+  - docker
+
+cache:
+  directories:
+    - "$APP_DIR/symfony/lib/vendor"
+    #- "target"
+
 before_install:
   - sudo chmod 777 -R build
   - ./build/travis/before_install.sh
