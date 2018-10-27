@@ -1,3 +1,3 @@
 #!/bin/bash
 
-echo "after_script"
+docker exec -it ohrmosdevenvironment_php-7.1_1 sh -c "cd devTools/general && php reset-installation.php"
