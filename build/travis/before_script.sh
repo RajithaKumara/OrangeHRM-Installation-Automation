@@ -20,6 +20,8 @@ cat .env
 docker-compose up -d
 docker ps
 
+docker images
+
 docker exec -it ohrmosdevenvironment_php-7.1_1 sh -c "php composer.phar install -d symfony/lib"
 docker exec -it ohrmosdevenvironment_php-7.1_1 sh -c "php composer.phar dump-autoload -o -d symfony/lib"
 docker exec -it ohrmosdevenvironment_php-7.1_1 sh -c "cd symfony && php symfony orangehrm:publish-assets"

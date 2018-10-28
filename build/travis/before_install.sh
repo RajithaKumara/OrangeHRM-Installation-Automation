@@ -4,9 +4,6 @@ echo "+-----------------------------------------+"
 echo "|    Travis CI Build Lifecycle Started    |"
 echo "+-----------------------------------------+"
 
-echo -e "\nJava version"
-java --version
-
 echo -e "\nmaven version"
 mvn --version
 
@@ -18,3 +15,6 @@ sudo chmod +x /usr/bin/chromedriver
 
 echo -e "\nchromedriver version"
 chromedriver --version
+
+docker images
+sudo ls /var/lib/docker
