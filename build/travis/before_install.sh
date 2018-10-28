@@ -15,6 +15,3 @@ sudo chmod +x /usr/bin/chromedriver
 
 echo -e "\nchromedriver version"
 chromedriver --version
-
-docker images
-sudo ls /var/lib/docker
