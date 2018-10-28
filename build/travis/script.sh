@@ -1,7 +1,6 @@
 #!/bin/bash
 
-pathToArtifacts=build/dist/travis/$TRAVIS_BUILD_NUMBER/$TRAVIS_JOB_NUMBER
-mkdir -p $pathToArtifacts
+mkdir -p $PATH_TO_ARTIFACTS
 
 # mvn exec:java -D"exec.mainClass"="orangeHrm.RunHeadless" -X
-mvn exec:java -D"exec.mainClass"="orangeHrm.RunHeadless" >>  $pathToArtifacts/buildLog.txt
+mvn exec:java -D"exec.mainClass"="orangeHrm.RunHeadless" >>  $PATH_TO_ARTIFACTS/buildLog.txt

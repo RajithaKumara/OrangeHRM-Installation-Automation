@@ -20,6 +20,7 @@ env:
     - GIT_ENV_DEPTH=50
     - GIT_ENV_URL=https://github.com/orangehrm/orangehrm-os-dev-environment
     - ENV_DIR=ohrm-os-dev-environment
+    - PATH_TO_ARTIFACTS=build/dist/travis/$TRAVIS_BUILD_NUMBER/$TRAVIS_JOB_NUMBER
 
 services:
   - docker
@@ -50,6 +51,9 @@ after_success:
 
 after_script:
   - ./build/travis/after_script.sh
+
+before_deploy:
+  - ./build/travis/before_deploy.sh
 
 deploy:
   provider: s3
