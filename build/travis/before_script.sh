@@ -20,7 +20,15 @@ cat .env
 docker-compose up -d
 docker ps
 
+echo -e "\n\n\ndocker images"
 docker images
+echo -e "\n\n\ndocker dir"
+sudo du -hs /var/lib/docker
+echo -e "\n\n\ndocker/overlay2 dir"
+sudo du -hs /var/lib/docker/overlay2
+echo -e "\n\n\ndocker/containers dir"
+sudo du -hs /var/lib/docker/containers
+echo -e "\n\n\n"
 
 docker exec -it ohrmosdevenvironment_php-7.1_1 sh -c "php composer.phar install -d symfony/lib"
 docker exec -it ohrmosdevenvironment_php-7.1_1 sh -c "php composer.phar dump-autoload -o -d symfony/lib"
