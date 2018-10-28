@@ -24,9 +24,9 @@ env:
 services:
   - docker
 
-cache:
-  directories:
-    - "$APP_DIR/symfony/lib/vendor"
+# cache:
+  # directories:
+    # - "$APP_DIR/symfony/lib/vendor"
     #- "target"
 
 before_install:
