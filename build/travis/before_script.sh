@@ -20,20 +20,14 @@ cat .env
 docker-compose up -d
 docker ps
 
-echo -e "\n\n\ndocker images"
-docker images
-echo -e "\n\n\ndocker dir"
-sudo du -hs /var/lib/docker
-echo -e "\n\n\ndocker/overlay2 dir"
-sudo du -hs /var/lib/docker/overlay2
-echo -e "\n\n\ndocker/containers dir"
-sudo du -hs /var/lib/docker/containers
-echo -e "\n\n\n"
+cmd1="php composer.phar install -d symfony/lib && php composer.phar dump-autoload -o -d symfony/lib"
+cmd2="cd symfony && php symfony orangehrm:publish-assets && php symfony cc"
 
-docker exec -it ohrmosdevenvironment_php-7.1_1 sh -c "php composer.phar install -d symfony/lib"
-docker exec -it ohrmosdevenvironment_php-7.1_1 sh -c "php composer.phar dump-autoload -o -d symfony/lib"
-docker exec -it ohrmosdevenvironment_php-7.1_1 sh -c "cd symfony && php symfony orangehrm:publish-assets"
-docker exec -it ohrmosdevenvironment_php-7.1_1 sh -c "cd symfony && php symfony cc"
+docker exec -it os_dev_$PHP_CONTAINER sh -c "${cmd1} && ${cmd2}"
+# docker exec -it ohrmosdevenvironment_php-7.1_1 sh -c "php composer.phar install -d symfony/lib"
+# docker exec -it ohrmosdevenvironment_php-7.1_1 sh -c "php composer.phar dump-autoload -o -d symfony/lib"
+# docker exec -it ohrmosdevenvironment_php-7.1_1 sh -c "cd symfony && php symfony orangehrm:publish-assets"
+# docker exec -it ohrmosdevenvironment_php-7.1_1 sh -c "cd symfony && php symfony cc"
 
 sleep 10
 cd ..
@@ -42,8 +36,7 @@ echo -e "\n127.0.0.1 php56 php70 php71 php72" | sudo tee -a /etc/hosts
 cat /etc/hosts
 
 # Edit Configuration.properties
-expression="s~driverPath.*~driverPath=/usr/bin/chromedriver~g; s~pathToInstaller.*~pathToInstaller=http://php71/~g; s~databasePassword.*~databasePassword=root~g; s~databaseHostName.*~databaseHostName=mysql55~g; s~whindowMaximize.*~whindowMaximize=false~g"
-echo "${expression}"
-sed "${expression}" configs/Configuration.properties > Configuration.properties
-cat Configuration.properties
-mv Configuration.properties configs
+sed -i "s~driverPath.*~driverPath=/usr/bin/chromedriver~g" $PATH_TO_CONFIG
+sed -i "s~pathToInstaller.*~pathToInstaller=http://$PHP_CONTAINER/~g" $PATH_TO_CONFIG
+sed -i "s~databasePassword.*~databasePassword=$MYSQL_ROOT_PASSWORD~g" $PATH_TO_CONFIG
+sed -i "s~whindowMaximize.*~whindowMaximize=false~g" $PATH_TO_CONFIG

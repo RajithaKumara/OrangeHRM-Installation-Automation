@@ -18,9 +18,17 @@ env:
     - APP_DIR=orangehrm
     - GIT_ENV_BRANCH=master
     - GIT_ENV_DEPTH=50
-    - GIT_ENV_URL=https://github.com/orangehrm/orangehrm-os-dev-environment
+    - GIT_ENV_URL=https://github.com/rajithakumara/orangehrm-os-dev-environment
     - ENV_DIR=ohrm-os-dev-environment
     - PATH_TO_ARTIFACTS=build/dist/travis/$TRAVIS_BUILD_NUMBER/$TRAVIS_JOB_NUMBER
+    - PATH_TO_CONFIG=configs/Configuration.properties
+    - MYSQL_ROOT_PASSWORD=root
+    - MYSQL_CONTAINERS=mysql55|mysql56|mysql57|mariadb55|mariadb100|mariadb101|mariadb102|mariadb103
+  matrix:
+    - PHP_CONTAINER=php56
+    # - PHP_CONTAINER=php70
+    # - PHP_CONTAINER=php71
+    # - PHP_CONTAINER=php72
 
 services:
   - docker
