@@ -35,7 +35,7 @@ public class RunHeadless {
 			System.setProperty("webdriver.chrome.driver", FileReaderManager.getInstance().getConfigFileReader().getDriverPath());
 
 			ChromeOptions options = new ChromeOptions();
-			options.addArguments("--headless","--ignore-certificate-errors");  
+			options.addArguments("--headless","--ignore-certificate-errors","--window-size=1920x1080");  
 			
 			WebDriver driver = new ChromeDriver(options); 
 			
