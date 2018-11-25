@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 # Clone orangehrm open source git repository
 git clone --single-branch -b $GIT_APP_BRANCH --depth $GIT_DEPTH $GIT_APP_URL $APP_DIR
 

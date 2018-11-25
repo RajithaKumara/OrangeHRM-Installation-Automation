@@ -4,7 +4,7 @@ dist: trusty
 language: java
 
 jdk:
-  - oraclejdk8
+  # - oraclejdk8
   - openjdk8
 
 addons:
@@ -28,9 +28,9 @@ env:
     - MYSQL_CONTAINERS='mysql55|mysql56|mysql57|mariadb55|mariadb100|mariadb101|mariadb102|mariadb103'
   matrix:
     - PHP_CONTAINER=php56
-    # - PHP_CONTAINER=php70
-    # - PHP_CONTAINER=php71
-    # - PHP_CONTAINER=php72
+    - PHP_CONTAINER=php70
+    - PHP_CONTAINER=php71
+    - PHP_CONTAINER=php72
 
 services:
   - docker
