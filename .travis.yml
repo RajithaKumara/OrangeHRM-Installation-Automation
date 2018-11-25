@@ -12,9 +12,11 @@ addons:
 
 env:
   global:
-    - GIT_APP_BRANCH=master
+    - GIT_APP_BRANCH=Travis-CI-Improvements
+    #master
     - GIT_DEPTH=50
-    - GIT_APP_URL=https://github.com/orangehrm/orangehrm
+    - GIT_APP_URL=https://github.com/RajithaKumara/orangehrm
+    #https://github.com/orangehrm/orangehrm
     - APP_DIR=orangehrm
     - GIT_ENV_BRANCH=master
     - GIT_ENV_DEPTH=50
