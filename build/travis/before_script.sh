@@ -19,6 +19,22 @@ sudo chmod 777 $APP_DIR/composer.phar
 cd $ENV_DIR
 expression="s~LOCAL_SRC.*~LOCAL_SRC=$TRAVIS_BUILD_DIR/$APP_DIR~g"
 sed "${expression}" .env-dist > .env
+
+docker pull samanthajayasinghe/php-dev-env-nginx
+docker pull samanthajayasinghe/php-dev-env-php56
+docker pull samanthajayasinghe/php-dev-env-php70
+docker pull samanthajayasinghe/php-dev-env-php71
+docker pull samanthajayasinghe/php-dev-env-php72
+docker pull mysql:5.7
+docker pull mysql:5.6
+docker pull mysql:5.5
+docker pull mariadb:5.5
+docker pull mariadb:10.0
+docker pull mariadb:10.1
+docker pull mariadb:10.2
+docker pull mariadb:10.3
+docker pull phpmyadmin/phpmyadmin
+
 docker-compose up -d
 
 cmd1="php composer.phar install -d symfony/lib && php composer.phar dump-autoload -o -d symfony/lib"
