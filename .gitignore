@@ -1,0 +1,9 @@
+.idea/
+.vscode/
+.settings/
+.classpath
+.project
+.DS_STORE
+local.properties
+*.class
+*.png
