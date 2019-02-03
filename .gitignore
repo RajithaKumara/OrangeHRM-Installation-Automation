@@ -1,9 +1,10 @@
 .idea/
 .vscode/
+
 .settings/
 .classpath
 .project
+target/
 .DS_STORE
-local.properties
 *.class
 *.png

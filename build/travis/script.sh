@@ -15,7 +15,7 @@ sed -i "s~databaseHostName.*~databaseHostName=$dbHost~g" $PATH_TO_CONFIG
 # Run headless testing
 mvn exec:java -D"exec.mainClass"="orangeHrm.RunHeadless" >>  $PATH_TO_ARTIFACTS/$dbHost/buildLog.txt
 
-# Copy test artifacts
+# Copy testing artifacts
 cp screenshot_orangehrm.png $PATH_TO_ARTIFACTS/$dbHost
 
 # Reset installation
