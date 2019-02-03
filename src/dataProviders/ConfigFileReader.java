@@ -37,10 +37,16 @@ public class ConfigFileReader {
 		}
 	}
 	
-	public Boolean getBrowserWindowSize() {
+	public Boolean getBrowserWindowMaximized() {
 		String windowSize = properties.getProperty("whindowMaximize");
 		if(windowSize !=null) return Boolean.valueOf(windowSize);
 		return true;		
+	}
+
+	public String getBrowserWindowSize() {
+		String windowSize = properties.getProperty("windowSize");
+		if (windowSize != null) return windowSize;
+		else throw new RuntimeException("windowSize Not specified in the Configuration.properties file");
 	}
 	
 	public String getDriverPath()
@@ -163,6 +169,12 @@ public class ConfigFileReader {
 		String value = properties.getProperty("saveScreenShotPath");
 		if(value != null) return value;
 		else throw new RuntimeException("save Screen Shot Path is not specified in the Configuration.properties file");
+	}
+
+	public Boolean getIgnoreCertificateErrors() {
+		String value = properties.getProperty("ignoreCertificateErrors");
+		if (value != null) return Boolean.valueOf(value);
+		return true;
 	}
 	
 }

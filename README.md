@@ -42,7 +42,7 @@ This project facilitates to run orangehrm automation suite.
   ```
   * Build the project
   ```bash
-  mvn build
+  mvn install
   ```
 
   * Change config file
@@ -71,7 +71,7 @@ adminPassword=Welin234_@tax
 saveScreenShotPath=screenshot_orangehrm.png
 
   ```
-  * Run Autamation
+  * Run Automation
   ```bash
   mvn exec:java -D"exec.mainClass"="orangeHrm.RunHeadless"
   ``` 

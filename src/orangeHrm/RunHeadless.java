@@ -21,21 +21,16 @@ public class RunHeadless {
 	
 		public static void main(String[] args) throws IOException 
 		{
-			//Driver Headless mode 
-//			System.setProperty("webdriver.chrome.driver", FileReaderManager.getInstance().getConfigFileReader().getDriverPath());  
-//			
-//			ChromeOptions options = new ChromeOptions(); 
-//			
-//			options.addArguments("--headless", "--disable-gpu", "--window-size=1920x1080","--ignore-certificate-errors");  
-//			
-//			WebDriver driver = new ChromeDriver(options);  
-			
-			//Trigger UI automation
-			
 			System.setProperty("webdriver.chrome.driver", FileReaderManager.getInstance().getConfigFileReader().getDriverPath());
 
 			ChromeOptions options = new ChromeOptions();
-			options.addArguments("--headless","--ignore-certificate-errors","--window-size=1920x1080");  
+			if (FileReaderManager.getInstance().getConfigFileReader().getBrowserWindowMaximized()) {
+				options.addArguments("--headless");
+			}
+			if (FileReaderManager.getInstance().getConfigFileReader().getIgnoreCertificateErrors()) {
+				options.addArguments("--ignore-certificate-errors");
+			}
+			options.addArguments("--window-size=" + FileReaderManager.getInstance().getConfigFileReader().getBrowserWindowSize());
 			
 			WebDriver driver = new ChromeDriver(options); 
 			
