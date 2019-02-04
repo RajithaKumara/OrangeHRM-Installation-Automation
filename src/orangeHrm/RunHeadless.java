@@ -32,6 +32,7 @@ public class RunHeadless {
 			}
 			options.addArguments("--window-size=" + FileReaderManager.getInstance().getConfigFileReader().getBrowserWindowSize());
 			
+			options.addArguments("--whitelisted-ips", "--no-sandbox", "--disable-extensions");
 			WebDriver driver = new ChromeDriver(options); 
 			
 			Installer newInstaller = new Installer(driver);
