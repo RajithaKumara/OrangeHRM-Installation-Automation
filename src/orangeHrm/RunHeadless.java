@@ -22,9 +22,11 @@ public class RunHeadless {
 		public static void main(String[] args) throws IOException 
 		{
 			System.setProperty("webdriver.chrome.driver", FileReaderManager.getInstance().getConfigFileReader().getDriverPath());
+			System.setProperty("webdriver.chrome.logfile", "/home/rajitha/Documents/GitHub/automation/OrangeHRM-Installation-Automation/logs/chromedriver.log");
+			System.setProperty("webdriver.chrome.verboseLogging", "true");
 
 			ChromeOptions options = new ChromeOptions();
-			if (FileReaderManager.getInstance().getConfigFileReader().getBrowserWindowMaximized()) {
+			if (!FileReaderManager.getInstance().getConfigFileReader().getBrowserWindowMaximized()) {
 				options.addArguments("--headless");
 			}
 			if (FileReaderManager.getInstance().getConfigFileReader().getIgnoreCertificateErrors()) {
@@ -32,7 +34,8 @@ public class RunHeadless {
 			}
 			options.addArguments("--window-size=" + FileReaderManager.getInstance().getConfigFileReader().getBrowserWindowSize());
 			
-			options.addArguments("--whitelisted-ips", "--no-sandbox", "--disable-extensions");
+			// options.addArguments("--disable-gpu", "--whitelisted-ips", "--no-sandbox", "--disable-extensions");
+			// options.setBinary("/usr/bin/google-chrome-stable");
 			WebDriver driver = new ChromeDriver(options); 
 			
 			Installer newInstaller = new Installer(driver);
