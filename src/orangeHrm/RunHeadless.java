@@ -22,8 +22,8 @@ public class RunHeadless {
 		public static void main(String[] args) throws IOException 
 		{
 			System.setProperty("webdriver.chrome.driver", FileReaderManager.getInstance().getConfigFileReader().getDriverPath());
-			System.setProperty("webdriver.chrome.logfile", "/home/rajitha/Documents/GitHub/automation/OrangeHRM-Installation-Automation/logs/chromedriver.log");
-			System.setProperty("webdriver.chrome.verboseLogging", "true");
+			// System.setProperty("webdriver.chrome.logfile", "/home/rajitha/Documents/GitHub/automation/OrangeHRM-Installation-Automation/logs/chromedriver.log");
+			// System.setProperty("webdriver.chrome.verboseLogging", "true");
 
 			ChromeOptions options = new ChromeOptions();
 			if (!FileReaderManager.getInstance().getConfigFileReader().getBrowserWindowMaximized()) {
