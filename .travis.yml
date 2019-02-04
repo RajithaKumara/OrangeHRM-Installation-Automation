@@ -1,14 +1,10 @@
 sudo: required
-dist: xenial #trusty
+dist: xenial
 
 language: java
 
 jdk:
-  # - oraclejdk8
   - openjdk8
-
-addons:
-  chrome: stable
 
 env:
   global:
@@ -36,11 +32,6 @@ env:
 services:
   - docker
 
-# cache:
-  # directories:
-    # - "$APP_DIR/symfony/lib/vendor"
-    #- "target"
-
 before_install:
   - sudo chmod 777 -R build
   - ./build/travis/before_install.sh
@@ -59,9 +50,6 @@ after_failure:
 
 after_success:
   - ./build/travis/after_success.sh
-
-after_script:
-  - ./build/travis/after_script.sh
 
 before_deploy:
   - ./build/travis/before_deploy.sh
