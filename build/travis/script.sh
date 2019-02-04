@@ -16,7 +16,7 @@ sed -i "s~databaseHostName.*~databaseHostName=$dbHost~g" $PATH_TO_CONFIG
 mvn exec:java -D"exec.mainClass"="orangeHrm.RunHeadless" >>  $PATH_TO_ARTIFACTS/$dbHost/buildLog.txt
 
 # Copy testing artifacts
-cp screenshot_orangehrm.png $PATH_TO_ARTIFACTS/$dbHost
+cp $PATH_TO_SCREENSHOT $PATH_TO_ARTIFACTS/$dbHost
 
 # Reset installation
 cmd1="cd symfony && php symfony orangehrm:publish-assets && php symfony cc"

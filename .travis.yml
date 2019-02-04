@@ -1,5 +1,5 @@
 sudo: required
-dist: trusty
+dist: xenial #trusty
 
 language: java
 
@@ -24,6 +24,7 @@ env:
     - ENV_DIR=ohrm-os-dev-environment
     - PATH_TO_ARTIFACTS=build/dist/travis/$TRAVIS_BUILD_NUMBER/$TRAVIS_JOB_NUMBER
     - PATH_TO_CONFIG=configs/Configuration.properties
+    - PATH_TO_SCREENSHOT=screenshot_orangehrm.png
     - MYSQL_ROOT_PASSWORD=root
     - MYSQL_CONTAINERS='mysql55|mysql56|mysql57|mariadb55|mariadb100|mariadb101|mariadb102|mariadb103'
   matrix:

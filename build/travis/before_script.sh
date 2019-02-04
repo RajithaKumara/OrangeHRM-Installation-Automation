@@ -38,10 +38,12 @@ sed "${expression}" .env-dist > .env
 
 docker-compose up -d
 
-cmd1="php composer.phar install -d symfony/lib && php composer.phar dump-autoload -o -d symfony/lib"
-cmd2="cd symfony && php symfony orangehrm:publish-assets && php symfony cc"
+cmd1="wget https://chromedriver.storage.googleapis.com/2.41/chromedriver_linux64.zip && unzip chromedriver_linux64.zip"
+cmd2="mv chromedriver /usr/bin/chromedriver && chmod +x /usr/bin/chromedriver && echo -e \"\nchromedriver version\" && chromedriver --version"
+cmd3="php composer.phar install -d symfony/lib && php composer.phar dump-autoload -o -d symfony/lib"
+cmd4="cd symfony && php symfony orangehrm:publish-assets && php symfony doctrine:build-model && php symfony cc"
 
-docker exec -it os_dev_$PHP_CONTAINER sh -c "${cmd1} && ${cmd2}"
+docker exec -it os_dev_$PHP_CONTAINER sh -c "${cmd1} && ${cmd2} && ${cmd3} && ${cmd4}"
 cd ..
 
 # Edit hosts file
@@ -52,3 +54,4 @@ sed -i "s~driverPath.*~driverPath=/usr/bin/chromedriver~g" $PATH_TO_CONFIG
 sed -i "s~pathToInstaller.*~pathToInstaller=http://$PHP_CONTAINER/~g" $PATH_TO_CONFIG
 sed -i "s~databasePassword.*~databasePassword=$MYSQL_ROOT_PASSWORD~g" $PATH_TO_CONFIG
 sed -i "s~whindowMaximize.*~whindowMaximize=false~g" $PATH_TO_CONFIG
+sed -i "s~saveScreenShotPath.*~saveScreenShotPath=$PATH_TO_SCREENSHOT~g" $PATH_TO_CONFIG
