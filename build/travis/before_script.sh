@@ -12,6 +12,7 @@ git clone --single-branch -b $GIT_ENV_BRANCH --depth $GIT_ENV_DEPTH $GIT_ENV_URL
 sudo chmod 777 -R .
 
 # Copy composer.phar to project directory
+wget https://getcomposer.org/download/1.8.3/composer.phar
 cp composer.phar $APP_DIR
 sudo chmod 777 $APP_DIR/composer.phar
 

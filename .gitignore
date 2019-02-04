@@ -4,6 +4,7 @@
 .settings/
 .classpath
 .project
+composer.phar
 target/
 .DS_STORE
 *.class
