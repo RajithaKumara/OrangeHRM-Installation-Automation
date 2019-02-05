@@ -12,7 +12,7 @@ env:
     - GIT_DEPTH=50
     - GIT_APP_URL=https://github.com/orangehrm/orangehrm
     - APP_DIR=orangehrm
-    - GIT_ENV_BRANCH=master
+    - GIT_ENV_BRANCH=develop
     - GIT_ENV_DEPTH=50
     - GIT_ENV_URL=https://github.com/orangehrm/orangehrm-os-dev-environment
     - ENV_DIR=ohrm-os-dev-environment
